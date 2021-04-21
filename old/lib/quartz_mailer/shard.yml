@@ -1,0 +1,15 @@
+name: quartz_mailer
+version: 0.7.2
+
+crystal: 0.33.0
+
+license: MIT
+
+dependencies:
+  kilt:
+    github: jeromegn/kilt
+    version: ~> 0.6.0
+
+  email:
+    github: arcage/crystal-email
+    version: ~> 0.6.0
