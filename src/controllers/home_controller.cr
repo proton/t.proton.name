@@ -60,7 +60,7 @@ class HomeController < ApplicationController
         "type" => "photo",
         "url" => url,
         "name" => name,
-        "preview" => x["preview"],
+        "preview" => x["file"],
         "date" => name[0...10],
         "year" => name[0...4],
         "is_hidden" => name.includes?("hidden")
