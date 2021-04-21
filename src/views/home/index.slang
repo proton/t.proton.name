@@ -1,11 +1,18 @@
 .row.justify-content-center
   .col-sm-12.col-md-6
     - medias.each do |media|
-      .container class="container_#{media["type"]}"
-        - next if media["is_hidden"]
+      - next if media["is_hidden"]
+      .container class="container_#{media["type"]}" title=media["date"]
+        a name="year_#{media["year"]}"
+        = media["date"]
         - if media["type"] == "video"
-          / video src=media["url"] controls type="video/mp4" preload="metadata"
-          = media["date"]
+          video src=media["url"] controls type="video/mp4" preload="metadata"
+
+ul.ruler
+  - years.each do |year|
+    li
+      a href="#year_#{year}"
+        = year
 
 
 / <?php
@@ -36,23 +43,9 @@
 / }
 / $notes = array_reverse($notes);
 / krsort($years);
-/ ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-/ <html xmlns="http://www.w3.org/1999/xhtml">
-/ <head>
-/ <link rel="SHORTCUT ICON" href="/img/ico.png" />
-/ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-/ <title>proton blog</title>
+/ ?>
 
-/ <!-- Style Sheet -->
-/ <link rel="stylesheet" type="text/css" media="all" href="/css/main.css" />
-/ <!-- JavaScripts -->
-
-/ </head>
-/ <body>
-/ <div id="wrap">
 / <?php foreach($notes as $note): ?>
-/ <?php if(substr($note['date'], 0, 1) === '.') continue; ?>
-/ <div class="container container_<?php echo $note['type']; ?>" title="<?php echo $note['date']; ?>">
 / <?php
 / $year = substr($note['date'], 0, 4);
 / if(!$years[$year])
@@ -73,20 +66,3 @@
 / </div>
 / <?php endforeach; ?>
 / </div>
-
-/ <ul class='ruler'>
-/ <?php
-/ foreach($years as $year => $present)
-/ {
-/   if(substr($year, 0, 1) === '.') continue;
-/   if($present)
-/   {
-/     echo "<li><a href='#year_$year'>$year</a></li>";
-/   }
-/   else
-/   {
-/     echo "<li>$year</li>";
-/   }
-/ }
-/ ?>
-/ </ul>

@@ -8,7 +8,8 @@ class HomeController < ApplicationController
     videos = load_videos(yandex_disk_token, yandex_disk_video_path)
     medias = videos
     medias = medias.reverse
-    # years = medias.map { |m| m["year"] }.uniq.sort
+
+    years = medias.map { |m| m["year"] }.uniq
     render("index.slang")
   end
   
@@ -20,8 +21,8 @@ class HomeController < ApplicationController
         "url" => x["file"],
         "name" => x["name"],
         "preview" => x["preview"],
-        "date" => name[0..10],
-        "year" => name[0..4],
+        "date" => name[0...10],
+        "year" => name[0...4],
         "is_hidden" => name.includes?("hidden")
       }
     end
