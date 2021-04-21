@@ -2,8 +2,10 @@
   .col-sm-12.col-md-6
     - medias.each do |media|
       .container class="container_#{media["type"]}"
+        - next if media["is_hidden"]
         - if media["type"] == "video"
-          video src=media["url"] controls type="video/mp4" preload="metadata"
+          / video src=media["url"] controls type="video/mp4" preload="metadata"
+          = media["date"]
 
 
 / <?php
