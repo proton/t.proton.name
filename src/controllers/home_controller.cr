@@ -7,7 +7,7 @@ class HomeController < ApplicationController
 
     videos = load_videos(yandex_disk_token, yandex_disk_video_path)
     medias = videos
-    medias = medias.reverse
+    medias = medias.sort_by { |m| m["date"].to_s }.reverse
 
     years = medias.map { |m| m["year"] }.uniq
     render("index.slang")

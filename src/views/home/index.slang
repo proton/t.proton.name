@@ -4,7 +4,6 @@
       - next if media["is_hidden"]
       .container class="container_#{media["type"]}" title=media["date"]
         a name="year_#{media["year"]}"
-        = media["date"]
         - if media["type"] == "video"
           video src=media["url"] controls type="video/mp4" preload="metadata"
 
@@ -13,37 +12,6 @@ ul.ruler
     li
       a href="#year_#{year}"
         = year
-
-
-/ <?php
-/ $show_hidden = $_GET['hidden'];
-/ echo $show_hidden;
-/ $notes_h = array();
-/ foreach(array('music','photo','video') as $type)
-/ {
-/   $files = array_diff(scandir('./content/'.$type), array('..', '.'));
-/   foreach($files as $f)
-/   {
-/     if((strpos($f, 'hidden') !== FALSE) && !$show_hidden) next;
-/     $date = substr($f, 0, 10);
-/     if(!array_key_exists($date, $notes_h)) $notes_h[$date] = array();
-/     $notes_h[$date][] = array('date' => $date, 'type' => $type, 'path' => "/content/".$type."/".$f);
-/   }
-/ }
-/ $notes = array();
-/ ksort($notes_h);
-/ foreach($notes_h as $date => $notes_a)
-/ {
-/   $notes = array_merge ($notes,  $notes_a);
-/ }
-/ $years = array();
-/ for($y = 1988; $y<=date('Y'); $y=$y+1)
-/ {
-/   $years[$y] = false;
-/ }
-/ $notes = array_reverse($notes);
-/ krsort($years);
-/ ?>
 
 / <?php foreach($notes as $note): ?>
 / <?php
