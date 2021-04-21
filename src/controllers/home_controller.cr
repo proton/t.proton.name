@@ -4,12 +4,32 @@ class HomeController < ApplicationController
   def index
     yandex_disk_token = ENV["YANDEX_DISK_TOKEN"]
 
-    photos = Crest.get(
-      "https://cloud-api.yandex.net/v1/disk/resources?path=t.proton.name-content%2Fphoto",
-      params: {:lang => "en"},
-      headers: {"Accept" => "application/json", "Authorization" => "OAuth #{yandex_disk_token}"},
-    )
-
+    videos = load_videos(yandex_disk_token)
+    medias = videos
     render("index.slang")
+  end
+  
+  def load_videos(yandex_disk_token)
+    load_yandex_disk_files("video", yandex_disk_token).map do |x|
+      name = x["name"].as_s
+      {
+        "type" => "video",
+        "url" => x["file"],
+        "name" => x["name"],
+        "preview" => x["preview"],
+        "date" => name[0..10],
+        "year" => name[0..4],
+        "is_hidden" => name.includes?("hidden")
+      }
+    end
+  end
+
+  def load_yandex_disk_files(path, token)
+    json = Crest.get(
+      "https://cloud-api.yandex.net/v1/disk/resources?path=t.proton.name-content%2F#{path}",
+      params: {:lang => "en"},
+      headers: {"Accept" => "application/json", "Authorization" => "OAuth #{token}"},
+    ).body
+    JSON.parse(json)["_embedded"]["items"].as_a
   end
 end
