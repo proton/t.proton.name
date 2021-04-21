@@ -71,7 +71,7 @@ class HomeController < ApplicationController
   def load_yandex_disk_files(token, path)
     json = Crest.get(
       "https://cloud-api.yandex.net/v1/disk/resources",
-      params: {"path" => path},
+      params: {"path" => path, "limit" => 1000 },
       headers: {"Accept" => "application/json", "Authorization" => "OAuth #{token}"},
     ).body
     JSON.parse(json)["_embedded"]["items"].as_a
