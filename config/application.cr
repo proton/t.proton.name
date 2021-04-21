@@ -11,7 +11,6 @@ require "amber"
 require "./settings"
 require "./logger"
 require "./i18n"
-require "./database"
 require "./initializers/**"
 
 # uncomment these 4 lines to enable plugins

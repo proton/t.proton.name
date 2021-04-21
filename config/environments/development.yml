@@ -15,7 +15,6 @@ process_count: 1
 # ssl_key_file:
 # ssl_cert_file:
 redis_url: "redis://localhost:6379"
-database_url: sqlite3:./db/t.proton.name_development.db
 auto_reload: true
 
 session:

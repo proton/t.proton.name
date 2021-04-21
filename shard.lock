@@ -1,4 +1,4 @@
-version: 2.0
+version: 1.0
 shards:
   amber:
     git: https://github.com/amberframework/amber.git
@@ -35,14 +35,6 @@ shards:
   crest:
     git: https://github.com/mamantoha/crest.git
     version: 0.26.4
-
-  db:
-    git: https://github.com/crystal-lang/crystal-db.git
-    version: 0.10.1
-
-  email:
-    git: https://github.com/arcage/crystal-email.git
-    version: 0.6.3
 
   exception_page:
     git: https://github.com/crystal-loot/exception_page.git
@@ -100,29 +92,9 @@ shards:
     git: https://github.com/amberframework/micrate.git
     version: 0.10.0
 
-  mysql:
-    git: https://github.com/crystal-lang/crystal-mysql.git
-    version: 0.13.0
-
   optarg:
     git: https://github.com/amberframework/optarg.git
     version: 0.8.0
-
-  pg:
-    git: https://github.com/will/crystal-pg.git
-    version: 0.23.2
-
-  pool:
-    git: https://github.com/ysbaddaden/pool.git
-    version: 0.2.4
-
-  quartz_mailer:
-    git: https://github.com/amberframework/quartz-mailer.git
-    version: 0.7.2
-
-  redis:
-    git: https://github.com/stefanwille/crystal-redis.git
-    version: 2.6.0
 
   selenium:
     git: https://github.com/paulcsmith/selenium-webdriver-crystal.git
@@ -135,10 +107,6 @@ shards:
   slang:
     git: https://github.com/jeromegn/slang.git
     version: 1.7.2
-
-  sqlite3:
-    git: https://github.com/crystal-lang/crystal-sqlite3.git
-    version: 0.18.0
 
   string_inflection:
     git: https://github.com/mosop/string_inflection.git
