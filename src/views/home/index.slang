@@ -8,15 +8,12 @@
           video src=media["url"] controls type="video/mp4" preload="metadata"
         - if media["type"] == "audio"
           audio src=media["url"] controls type="audio/mp3" preload="metadata"
+        - if media["type"] == "photo"
+          a href=media["url"] target="_blank"
+            img src=media["preview"]
 
 ul.ruler
   - years.each do |year|
     li
       a href="#year_#{year}"
         = year
-
-/ <?php if($note['type']=='photo'): ?>
-/ <a href="<?php echo str_replace("photo","photo_original",$note['path']); ?>" target='_blank'><img src="<?php echo $note['path']; ?>"></a>
-/ <?php endif; ?>
-/ <?php if($note['type']=='video'): ?>
-/ <video src="<?php echo $note['path']; ?>" controls type="video/mp4" preload="metadata"></audio>

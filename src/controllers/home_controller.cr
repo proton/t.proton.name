@@ -10,7 +10,9 @@ class HomeController < ApplicationController
 
     videos = load_videos(yandex_disk_token, yandex_disk_video_path)
     audios = load_audios(yandex_disk_token, yandex_disk_audio_path)
-    medias = videos + audios
+    photos = load_photos(yandex_disk_token, yandex_disk_photo_full_path, yandex_disk_photo_preview_path)
+
+    medias = videos + audios + photos
     medias = medias.sort_by { |m| m["date"].to_s }.reverse
 
     years = medias.map { |m| m["year"] }.uniq
@@ -23,7 +25,7 @@ class HomeController < ApplicationController
       {
         "type" => "video",
         "url" => x["file"],
-        "name" => x["name"],
+        "name" => name,
         "preview" => x["preview"],
         "date" => name[0...10],
         "year" => name[0...4],
@@ -36,10 +38,29 @@ class HomeController < ApplicationController
     load_yandex_disk_files(token, path).map do |x|
       name = x["name"].as_s
       {
-        "type" => "aujdio",
+        "type" => "audio",
         "url" => x["file"],
-        "name" => x["name"],
+        "name" => name,
         # "preview" => x["preview"],
+        "date" => name[0...10],
+        "year" => name[0...4],
+        "is_hidden" => name.includes?("hidden")
+      }
+    end
+  end
+  
+  def load_photos(token, originals_path, previews_path)
+    originals = load_yandex_disk_files(token, originals_path).index_by { |x| x["name"].as_s }
+    previews = load_yandex_disk_files(token, previews_path)
+
+    previews.map do |x|
+      name = x["name"].as_s
+      url = originals[name]["file"]
+      {
+        "type" => "photo",
+        "url" => url,
+        "name" => name,
+        "preview" => x["preview"],
         "date" => name[0...10],
         "year" => name[0...4],
         "is_hidden" => name.includes?("hidden")
