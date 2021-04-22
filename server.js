@@ -16,13 +16,24 @@ app.get('/', async (_req, res) => {
   const yandexDiskPhotoFullPath = process.env.YANDEX_DISK_PHOTO_PREVIEW_PATH
   const yandexDiskPhotoPreviewPath = process.env.YANDEX_DISK_PHOTO_FULL_PATH
 
-  const videos = await loadVideos(yandexDiskToken, yandexDiskVideoPath)
-  const audios = await loadAudios(yandexDiskToken, yandexDiskAudioPath)
-  const photos = await loadPhotos(yandexDiskToken, yandexDiskPhotoFullPath, yandexDiskPhotoPreviewPath)
+  let medias = []
 
-  const medias = []
-    .concat(videos, audios, photos)
-    .sort((x, y) => x.date > y.date ? 1 : -1)
+  if (!!yandexDiskToken) {
+    if (yandexDiskVideoPath) {
+      const videos = await loadVideos(yandexDiskToken, yandexDiskVideoPath)
+      medias = medias.concat(videos)
+    }
+    if (yandexDiskAudioPath) {
+      const audios = await loadAudios(yandexDiskToken, yandexDiskAudioPath)
+      medias = medias.concat(audios)
+    }
+    if (yandexDiskPhotoFullPath && yandexDiskPhotoPreviewPath) {
+      const photos = await loadPhotos(yandexDiskToken, yandexDiskPhotoFullPath, yandexDiskPhotoPreviewPath)
+      medias = medias.concat(photos)
+    }
+  }
+
+  medias = medias.sort((x, y) => x.date > y.date ? 1 : -1)
 
   let years = medias.map(m => m.year)
   years = [...new Set(years)].sort((x, y) => x - y)
