@@ -1,4 +1,4 @@
-const moment = require('moment')
+// const moment = require('moment')
 
 const axios = require('axios').default
 
@@ -24,7 +24,7 @@ app.get('/', async (_req, res) => {
 
   const medias = []
     .concat(videos, audios, photos)
-    .sort((x, y) => x.date - y.date)
+    .sort((x, y) => x.date > y.date ? 1 : -1)
 
   let years = medias.map(m => m.year)
   years = [...new Set(years)].sort((x, y) => x - y)
