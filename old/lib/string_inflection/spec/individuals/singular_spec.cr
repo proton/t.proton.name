@@ -1,5 +1,0 @@
-require "../spec_helper"
-require "../../src/singular"
-require "../../src/case/singular"
-require "../../src/string/to/singular"
-require "./singular"

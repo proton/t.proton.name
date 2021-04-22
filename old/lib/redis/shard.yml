@@ -1,9 +1,0 @@
-name: redis
-version: 2.6.0
-
-authors:
-  - Stefan Wille <nospam-post@nospam-stefanwille-dot-com>
-
-dependencies:
-  pool:
-    github: ysbaddaden/pool

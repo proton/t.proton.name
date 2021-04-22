@@ -1,5 +1,0 @@
-require "../spec_helper"
-require "../../src/camel"
-require "../../src/case/camel"
-require "../../src/string/to/camel"
-require "./camel"
