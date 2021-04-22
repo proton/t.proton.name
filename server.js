@@ -1,5 +1,3 @@
-// const moment = require('moment')
-
 const axios = require('axios').default
 
 const express = require('express')
