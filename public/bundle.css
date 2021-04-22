@@ -1,0 +1,94 @@
+html, body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #ddd;
+  color: black;
+  font-family: Tahoma, Geneva, sans-serif;
+  font-size: 16px;
+}
+a:link, a:visited, a:hover, a:active {
+  color: #fff;
+  text-decoration: none;
+}
+h1 {
+  font-size: 36px;
+  padding: 0px;
+  margin: 0px;
+}
+h2 {
+  font-size: 18px;
+  padding: 0px;
+}
+h3 {
+  font-size: 18px;
+  padding: 0px;
+  margin: 0px;
+}
+p.p {
+  width: 751px;
+}
+table.table {
+  width: 751px;
+}
+table.table td {
+  border: 1px dotted #fc5604;
+}
+th {
+  border: 1px dotted #fc5604;
+}
+table.tableb {
+  width: 751px;
+}
+table.tableb td {
+  border: none;
+}
+th {
+  border: none;
+}
+ul.ul {
+  text-align: left;
+  margin-top: 0px;
+  font-size: 15px;
+}
+#wrap {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.container {
+  background-color: white;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  overflow: hidden;
+  display: inline-block;
+}
+.container img, .container video {
+  width: 300px;
+  height: 300px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+}
+.ruler {
+  position: fixed;
+  top: 0px;
+  right: 20px;
+  list-style: none;
+}
+.ruler li {
+  color: white;
+  font-family: Helvetica;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+.ruler a {
+  color: #222;
+  text-decoration: none;
+}
