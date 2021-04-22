@@ -1,9 +1,9 @@
-const axios = require('axios').default
-
 const express = require('express')
 const app = express()
 app.use(express.static('public'))
 app.set('view engine', 'pug')
+
+const axios = require('axios').default
 
 app.listen(3000, _ => {
   console.log(`listening on ${3000}`)
