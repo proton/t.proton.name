@@ -22,12 +22,12 @@ app.get('/', async (_req, res) => {
   const audios = await loadAudios(yandexDiskToken, yandexDiskAudioPath)
   const photos = await loadPhotos(yandexDiskToken, yandexDiskPhotoFullPath, yandexDiskPhotoPreviewPath)
 
-  const medias = [].concat(videos, audios, photos)
-  // medias = medias.sort_by { |m| m["date"].to_s }.reverse
+  const medias = []
+    .concat(videos, audios, photos)
+    .sort((x, y) => x.date - y.date)
 
-  // years = medias.map { |m| m["year"] }.uniq
-  const years = [1988, 2020]
-  
+  let years = medias.map(m => m.year)
+  years = [...new Set(years)]
 
   res.render('index', { medias: medias, years: years })
 })
