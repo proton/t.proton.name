@@ -12,9 +12,10 @@ html
       .row.justify-content-center
         .col-sm-12.col-md-6
           each media in medias
-            //- - next if media["is_hidden"]
+            if media.isHidden
+              - continue
             .container(class=`container_${media.type}` title=media.date)
-              a name=`year_${media.year}`
+              a(name=`year_${media.year}`)
           //-     - if media["type"] == "video"
           //-       video src=media["url"] controls type="video/mp4" preload="metadata"
           //-     - if media["type"] == "audio"
