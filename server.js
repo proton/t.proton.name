@@ -27,7 +27,7 @@ app.get('/', async (_req, res) => {
     .sort((x, y) => x.date - y.date)
 
   let years = medias.map(m => m.year)
-  years = [...new Set(years)]
+  years = [...new Set(years)].sort((x, y) => x - y)
 
   res.render('index', { medias: medias, years: years })
 })
