@@ -43,7 +43,7 @@ app.get('/', async (_req, res) => {
 
 const loadYandexDiskFiles = async(token, path) => {
   const response = await axios.get('https://cloud-api.yandex.net/v1/disk/resources', {
-    params: { path: path, limit: 1000 },
+    params: { path: path, limit: 1000, ts: new Date().getTime() },
     headers: {'Accept': 'application/json', 'Authorization': `OAuth ${token}`}
   })
 
