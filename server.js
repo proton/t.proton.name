@@ -27,7 +27,7 @@ app.get('/media/:fileName', async (req, res) => {
 
 app.get('/preview/:fileName', async (req, res) => {
   if (req.params.fileName.startsWith('.')) return
-  res.sendFile(CONTENT_DIRECTORY + '/' + req.params.fileName)
+  res.sendFile(PREVIEWS_DIRECTORY + '/' + req.params.fileName)
 })
 
 const loadMedia = async (_) => {
