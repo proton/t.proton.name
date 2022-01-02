@@ -48,7 +48,7 @@ const mapMedia = (fileName) => {
     isHidden: fileName.includes("hidden")
   }
   if (fileName.endsWith("jpg")) media.type = "photo"
-  else if (fileName.endsWith("mp4")) media.type = "photo"
+  else if (fileName.endsWith("mp4")) media.type = "video"
   else if (fileName.endsWith("mp3")) media.type = "audio"
   else if (fileName.endsWith("txt")) media.type = "text"
 

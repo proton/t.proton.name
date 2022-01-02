@@ -23,6 +23,9 @@ html
               else if media.type == 'photo'
                 a(href=media.url target="_blank")
                   img(src=media.preview)
+              else if media.type == 'text'
+                a(href=media.url target="_blank")
+                  | text
 
       ul.ruler
         each year in years
