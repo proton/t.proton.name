@@ -5,9 +5,6 @@ on:
     branches:
       - master
 
-env:
-  DOCKER_IMAGE: ${{github.repository}}:latest
-
 jobs:
   setup-build-publish-deploy:
     name: Setup, Build, Publish, and Deploy
