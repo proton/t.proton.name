@@ -1,9 +1,15 @@
-document.addEventListener('play', function(e){
-  let audios = document.getElementsByTagName('audio');
-  for (let i = 0, len = audios.length; i < len; ++i) {
-    if (audios[i] != e.target) {
-      audios[i].pause();
-      audios[i].currentTime = 0;
-    }
+(function() {
+  const audios = document.getElementsByTagName('audio')
+  const videos = document.getElementsByTagName('video')
+  const medias = [...audios, ...videos]
+
+  for (const media of medias) {
+    media.addEventListener('play', _ => {
+      for (const otherMedia of medias) {
+        if (media === otherMedia) continue
+        otherMedia.pause();
+        otherMedia.currentTime = 0;
+      }
+    })
   }
-}, true);
+})()

@@ -22,11 +22,13 @@ app.get('/', async (_req, res) => {
 
 app.get('/media/:fileName', async (req, res) => {
   if (req.params.fileName.startsWith('.')) return
+  res.set('Cache-control', 'public, max-age=30000000')
   res.sendFile(CONTENT_DIRECTORY + '/' + req.params.fileName)
 })
 
 app.get('/preview/:fileName', async (req, res) => {
   if (req.params.fileName.startsWith('.')) return
+  res.set('Cache-control', 'public, max-age=30000000')
   res.sendFile(PREVIEWS_DIRECTORY + '/' + req.params.fileName)
 })
 
