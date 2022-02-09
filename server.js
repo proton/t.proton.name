@@ -51,6 +51,7 @@ const mapMedia = (fileName) => {
   }
   const lowerCasedFileName = fileName.toLowerCase()
   if (lowerCasedFileName.endsWith("jpg")) media.type = "photo"
+  else if (lowerCasedFileName.endsWith("jpeg")) media.type = "photo"
   else if (lowerCasedFileName.endsWith("mp4")) media.type = "video"
   else if (lowerCasedFileName.endsWith("mp3")) media.type = "audio"
   else if (lowerCasedFileName.endsWith("txt")) media.type = "text"
