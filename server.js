@@ -15,7 +15,7 @@ app.get('/', async (_req, res) => {
   const medias = await loadMedia()
 
   let years = medias.map(m => m.year)
-  years = [...new Set(years)].sort((x, y) => x - y)
+  years = [...new Set(years)].sort((x, y) => y - x)
 
   res.render('index', { medias: medias, years: years })
 })
@@ -37,7 +37,7 @@ const loadMedia = async (_) => {
            .map(mapMedia)
            .filter(x => x)
            .filter(x => x.type)
-           .sort((x, y) => x.date > y.date ? 1 : -1)
+           .sort((x, y) => y.date > x.date ? 1 : -1)
 }
 
 const mapMedia = (fileName) => {
