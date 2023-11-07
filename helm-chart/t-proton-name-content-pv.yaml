@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: t-proton-name-content-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  claimRef:
+    namespace: default
+    name: t-proton-name-content-pvc
+  hostPath:
+    path: /home/proton/services/data/t.proton.name/content
+  persistentVolumeReclaimPolicy: Retain
