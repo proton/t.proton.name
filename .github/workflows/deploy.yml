@@ -57,4 +57,5 @@ jobs:
 
       - name: Deploy Helm Chart
         run: |
+          kubectl apply -f ./helm-chart/t-proton-name-content-pv.yaml
           helm upgrade --install $(echo ${{ github.repository }} | cut -d '/' -f 2) ./helm-chart
