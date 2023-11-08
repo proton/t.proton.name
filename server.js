@@ -40,6 +40,20 @@ const loadMedia = async (_) => {
            .sort((x, y) => y.date > x.date ? 1 : -1)
 }
 
+const mediaTypes = {
+  photo: ['jpg', 'jpeg'],
+  video: ['mp4', 'mov'],
+  audio: ['mp3'],
+  text: ['txt'],
+}
+
+const extensionToType = {}
+for (const [type, extensions] of Object.entries(mediaTypes)) {
+  for (const extension of extensions) {
+    extensionToType[extension] = type
+  }
+}
+
 const mapMedia = (fileName) => {
   const media = {
     url: '/media/' + fileName,
@@ -49,13 +63,9 @@ const mapMedia = (fileName) => {
     year: +fileName.slice(0, 4),
     isHidden: fileName.includes("hidden")
   }
-  const lowerCasedFileName = fileName.toLowerCase()
-  if (lowerCasedFileName.endsWith("jpg")) media.type = "photo"
-  else if (lowerCasedFileName.endsWith("jpeg")) media.type = "photo"
-  else if (lowerCasedFileName.endsWith("mp4")) media.type = "video"
-  else if (lowerCasedFileName.endsWith("mov")) media.type = "video"
-  else if (lowerCasedFileName.endsWith("mp3")) media.type = "audio"
-  else if (lowerCasedFileName.endsWith("txt")) media.type = "text"
+
+  const extension = fileName.toLowerCase().split('.').pop()
+  media.type = extensionToType[extension]
 
   return media
 }
