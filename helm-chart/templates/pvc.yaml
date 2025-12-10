@@ -8,4 +8,4 @@ spec:
   resources:
     requests:
       storage: 10Gi
-  storageClassName: "" # an empty string "" will use the default StorageClass
+  storageClassName: local-path
